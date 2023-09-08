@@ -6,25 +6,24 @@
 #include <stdio.h>
 
 /**
- * main - main function
- *
- * Return: always 0
- */
-
+  * main - Prints all the different combinations of two digits
+  *
+  * Return: Always (Success)
+  */
 int main(void)
 {
-	int x, i;
+	int c, i;
 
-	x = i = '0';
+	c = i = '0';
 
-	for (x = '0'; x <= '9'; x++)
+	for (c = '0'; c <= '9'; c++)
 	{
 		for (i = '0'; i <= '9'; i++)
 		{
-			putchar(x);
+			putchar(c);
 			putchar(i);
 
-			if ((x != '9') || (x == '9' && i != '9'))
+			if ((c != '9') || (c == '9' && i != '9'))
 			{
 				putchar(',');
 				putchar(' ');
