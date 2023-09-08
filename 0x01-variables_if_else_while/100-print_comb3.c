@@ -13,8 +13,7 @@
 
 int main(void)
 {
-	int x;
-	int i;
+	int x, i;
 
 	x = i = '0';
 
