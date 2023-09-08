@@ -27,3 +27,12 @@ Write a program that prints all the numbers of base 16 in lowercase, followed by
 
 9. Patience, persistence and perspiration make an unbeatable combination for success:
 Write a program that prints all possible combinations of single-digit numbers.
+
+10. Inventing is a combination of brains and materials. The more brains you use, the less material you need:
+Write a program that prints all possible different combinations of two digits.
+
+11. The success combination in business is: Do what you do better... and: do more of what you do...:
+Write a program that prints all possible different combinations of three digits.
+
+12. Software is eating the World:
+Write a program that prints all possible combinations of two two-digit numbers.
