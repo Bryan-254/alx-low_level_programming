@@ -8,12 +8,14 @@
 
 int _abs(int a)
 {
-	if (a < '0')
-		return (-a);
-	else if (a >= 0)
+	if (a < 0)
 	{
-		return (a);
+		int abs_val;
+
+		abs_val = a * -1;
+
+		return (abs_val);
 	}
 
-	return (0);
+	return (a);
 }
