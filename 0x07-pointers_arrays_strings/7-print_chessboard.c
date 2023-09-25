@@ -3,21 +3,18 @@
 
 /**
  * print_chessboard - Function that prints the chessboard
- * @a: character
- * Return: 0
+ * @a: The array
+ * Return: Always 0
  */
 
 void print_chessboard(char (*a)[8])
 {
-	int x, y;
+	int i, x;
 
-	for (x = 0; x < 8; x++)
+	for (i = 0 ; i < 8 ; i++)
 	{
-		for (y = 0; y < 8; y++)
-		{
-			printf("%c ", a[x][y]);
-		}
-
-		printf("\n");
+		for (x = 0 ; x < 8 ; x++)
+			_putchar(a[i][x]);
+		_putchar('\n');
 	}
 }
