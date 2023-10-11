@@ -1,44 +1,49 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 
 
 /**
- * main - Prints the opcodes of the main function.
- *
- * @argc: The number of command-line arguments.
- * @argv: An array of strings containing the command-line arguments.
- * Return: 0 or 1 or 2.
+ * print_opcodes - print the opcodes of this program
+ * @a: address of the main function
+ * @n: number of bytes to print
+ * Return: void
  */
 
-int main(int argc, char *argv[])
+void print_opcodes(char *a, int n)
 {
-	if (argc != 2)  /*Checking if the number of arguments is incorrect*/
+	int i;
+
+	for (i = 0; i < n; i++)
 	{
-		printf("Error\n");
-		printf("Usage: ./main number_of_bytes\n");
-		exit(1);  /*Exiting the program with a status of 1*/
+		printf("%.2hhx", a[i]);
+		if (i < n - 1)
+			printf(" ");
 	}
-
-	int numBytes = atoi(argv[1]);  /*Converting the argument to an integer*/
-
-	if (numBytes < 0) /*Checking if the number of bytes is negative*/
-	{
-		printf("Error\n");
-		exit(2);  /* Exiting the program with a status of 2*/
-	}
-
-	/*Getting main function address*/
-	unsigned char *mainAddress = (unsigned char *) main;
-
-	printf("Opcode of main function:\n");
-
-	for (int i = 0; i < numBytes; i++)
-	{
-		printf("%02x ", mainAddress[i]);  /*Printing opcode in hexadecimal format*/
-	}
-
 	printf("\n");
+}
 
+/**
+ * main - prints the opcodes of its own main function
+ * @argc: number of arguments passed to the function
+ * @argv: array of pointers to arguments
+ * Return: always 0
+ */
+
+int main(int argc, char **argv)
+{
+	int n;
+
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	n = atoi(argv[1]);
+	if (n < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
+	print_opcodes((char *)&main, n);
 	return (0);
 }
