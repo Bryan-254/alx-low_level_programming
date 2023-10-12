@@ -10,29 +10,22 @@
 
 int sum_them_all(const unsigned int n, ...)
 {
-	if (n == 0) /*If there are no numbers to sum*/
-		return (0);
+	va_list ap;/*create a list to hold the variable arguments*/
+	unsigned int i;/*variable to use as a loop counter*/
+	int sum = 0;/*Initializes variable sum to keep track of total sum*/
 
-	/*Initialize a variable sum to keep track of the total sum*/
-	int sum = 0;
+	va_start(ap, n);
 
-	va_list args;/*create a list to hold the variable arguments*/
+	for (i = 0; i < n; i++)/*loop iterates through variable arguments*/
+		/*Uses va_arg to retrieve each argument from the va_list*/
+		/*and adds it to the sum*/
+		sum += va_arg(ap, int);
 
-	va_start(args, n);/*This starts processing variable arguments*/
+	/*va_end cleans up the va_list object ap, allowing the program*/
+	/*to release any resources associated with it*/
+	va_end(ap);
 
-	/*Loop to go through each of the variable arguments*/
-	for (unsigned int i = 0; i < n; i++)
-	{
-		/*va_arg(args, int) fetches the next argument from*/
-		/*the list and adds it to the running total sum*/
-		int num = va_arg(args, int);
-
-		sum += num;
-	}
-
-	/*clean up using va_end to release the resources*/
-	/*associated with the va_list*/
-	va_end(args);
-
+	/*returns the calculated sum of all the arguments*/
 	return (sum);
 }
+
