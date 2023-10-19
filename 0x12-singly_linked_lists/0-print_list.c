@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * print_list - This function prints all elements of a list_t list
+ * print_list - This function prints all elements of list_t list
  * @h: Pointer to head of the linked list
  * Return: Number of nodes in the list
  */
@@ -11,7 +11,7 @@ size_t print_list(const list_t *h)
 {
 	size_t nd;
 
-	nd = 0; /*Start count from zero*/
+	nd = 0;
 
 	while (h != NULL)
 	{
