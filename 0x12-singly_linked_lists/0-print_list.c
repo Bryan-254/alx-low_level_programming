@@ -4,7 +4,7 @@
 
 /**
  * print_list - This function prints all elements of list_t list
- * @h: Pointer to head of the linked list
+ * @h: Pointer to head of linked list
  * Return: Number of nodes in the list
  */
 
