@@ -23,8 +23,7 @@ void print_binary(unsigned long int n)
 		{
 			putchar('0');
 		}
-
-		if ((shift & 3) == 0)
+		if (x % 4 == 0)
 		{
 			putchar(' ');
 		}
