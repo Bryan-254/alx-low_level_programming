@@ -8,25 +8,9 @@
 
 void print_binary(unsigned long int n)
 {
-	int numberof_bits = sizeof(unsigned long int) * 8;
-	int shift;
-	int x;
-
-	for (x = numberof_bits - 1; x >= 0; x--)
+	if (n > 1)
 	{
-		shift = x;
-		if (n & (1UL << shift))
-		{
-			putchar('1');
-		}
-		else
-		{
-			putchar('0');
-		}
-		if (x % 4 == 0)
-		{
-			putchar(' ');
-		}
+		print_binary(n >> 1);
 	}
-	putchar('\n');
+	_putchar((n & 1) ? '1' : '0');
 }
