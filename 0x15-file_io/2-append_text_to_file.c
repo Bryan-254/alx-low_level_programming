@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 
 /**
- * append_text_to_file - Function that appends text at end of a file
+ * append_text_to_file - Function that appends text at end of file
  * @filename: the name of the file
  * @text_content: NULL terminated string to add at end of the file
  * Return: 1 on success and -1 on failure
