@@ -21,36 +21,37 @@ int copyFile(const char *file_from, const char *file_to)
 
 	if (fdFrom  == -1)
 	{
-		perror("Error opening source file");
+		fprintf(stderr, "Error: Can't read from file %s\n", file_from);
 		return (98);
 	}
-
 	if (fdTo == -1)
 	{
-		perror("Error opening or creating destination file");
+		fprintf(stderr, "Error: Can't write to file %s\n", file_to);
 		close(fdFrom);
 		return (99);
 	}
-
 	while ((bytesRead = read(fdFrom, buffer, sizeof(buffer))) > 0)
 	{
 		bytesWritten = write(fdTo, buffer, bytesRead);
 
 		if (bytesWritten == bytesRead)
 		{
-			perror("Error writing to destination file");
+			fprintf(stderr, "Error: Can't write to file %s\n", file_to);
 			close(fdFrom);
 			close(fdTo);
 			return (99);
 		}
 	}
-
-	if (close(fdFrom) == -1 || close(fdTo) == -1)
+	if (close(fdFrom) == -1)
 	{
-		perror("Error closing files");
+		fprintf(stderr, "Error: Can't close fd %d\n", fdFrom);
 		return (100);
 	}
-
+	if (close(fdTo) == -1)
+	{
+		fprintf(stderr, "Error: Can't close fd %d\n", fdTo);
+		return (100);
+	}
 	return (0);
 }
 
@@ -63,22 +64,22 @@ int copyFile(const char *file_from, const char *file_to)
 
 int main(int argc, char *argv[])
 {
+	int result = copyFile(argv[1], argv[2]);
+
 	if (argc != 3)
 	{
 		fprintf(stderr, "Usage: %s file_from file_to\n", argv[0]);
-		return (1);
+		return (97);
 	}
-
 	if (access(argv[1], R_OK) == -1)
 	{
 		fprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
-		return (1);
+		return (98);
 	}
-
-	if (copyFile(argv[1], argv[2]) != 0)
+	if (result != 0)
 	{
 		fprintf(stderr, "Error copying file\n");
-		return (1);
+		return (result);
 	}
 
 	printf("File copied successfully.\n");
