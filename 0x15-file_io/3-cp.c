@@ -22,14 +22,14 @@ int copyFile(const char *file_from, const char *file_to)
 	if (fdFrom  == -1)
 	{
 		perror("Error opening source file");
-		return (1);
+		return (98);
 	}
 
 	if (fdTo == -1)
 	{
 		perror("Error opening or creating destination file");
 		close(fdFrom);
-		return (1);
+		return (99);
 	}
 
 	while ((bytesRead = read(fdFrom, buffer, sizeof(buffer))) > 0)
@@ -41,14 +41,14 @@ int copyFile(const char *file_from, const char *file_to)
 			perror("Error writing to destination file");
 			close(fdFrom);
 			close(fdTo);
-			return (1);
+			return (99);
 		}
 	}
 
 	if (close(fdFrom) == -1 || close(fdTo) == -1)
 	{
 		perror("Error closing files");
-		return (1);
+		return (100);
 	}
 
 	return (0);
