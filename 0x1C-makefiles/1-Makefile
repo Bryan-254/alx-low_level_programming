@@ -1,0 +1,5 @@
+CC=gcc
+SRC=school main.c
+
+all:
+	$(CC) $(SRC) -o school
