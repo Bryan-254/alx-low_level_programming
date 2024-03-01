@@ -1,0 +1,5 @@
+# Simple Makefile to build 'school' executable
+
+# Target 'all' will compile the executable named 'school'
+all:
+	gcc main.c school.c -o school
